@@ -221,11 +221,12 @@ func mockTxData(utxo *account.UTXO, testAccount *account.Account) (*txbuilder.Te
 
 func mockWallet(walletDB dbm.DB, account *account.Manager, asset *asset.Registry, chain *protocol.Chain) *Wallet {
 	return &Wallet{
-		DB:             walletDB,
-		AccountMgr:     account,
-		AssetReg:       asset,
-		chain:          chain,
-		rescanProgress: make(chan struct{}, 1),
+		DB:                  walletDB,
+		AccountMgr:          account,
+		AssetReg:            asset,
+		chain:               chain,
+		rescanProgress:      make(chan struct{}, 1),
+		selfProgramsOnChain: NewSet(),
 	}
 }
 
